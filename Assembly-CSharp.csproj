@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="Assets\Code\Card.cs" />
     <Compile Include="Assets\Code\Deck.cs" />
+    <Compile Include="Assets\Code\DeckTestDriver.cs" />
+    <Compile Include="Assets\Code\SampleSceneCode.cs" />
+    <Compile Include="Assets\Code\Table.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Playing Cards\Readme_Eng.txt" />

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card
 {
     private string cardValue = "";      //String tha will hold the cards value
     private char cardSuit;							//Char that will hold the cards suit
@@ -63,6 +63,16 @@ public class Card : MonoBehaviour
     public char getCardSuit()
     {
         return cardSuit;                //Return the suit of the card
+    }
+
+    public void setCardSuit(char s)
+    {
+        cardSuit = s;                //Set the suit of the card
+    }
+
+    public void setCardValue(string s)
+    {
+        cardValue = s;                //Set the suit of the card
     }
 
     /**
