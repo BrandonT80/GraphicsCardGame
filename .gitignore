@@ -4,4 +4,5 @@ Library/EditorInstance.json
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
 Logs/shadercompiler-UnityShaderCompiler.exe0.log
 Temp/
+Library/Artifacts
 *.log
