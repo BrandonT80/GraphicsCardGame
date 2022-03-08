@@ -21,6 +21,10 @@ public class SampleSceneCode : MonoBehaviour
         deck = deckObject.GetComponent(typeof(Deck)) as Deck;
         table = GameObject.Find("Table");
         tableCode = table.GetComponent(typeof(Table)) as Table;
+        deck.shuffleDeck();
+        deck.shuffleDeck();
+        deck.shuffleDeck();
+        deck.shuffleDeck();
         dealAll();
     }
 
@@ -34,8 +38,33 @@ public class SampleSceneCode : MonoBehaviour
     {
         for(int i = 0; i < tableCode.pokerLocations.Length; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             createPhysicalCard(tableCode.pokerLocations[i], deck.drawCards(1, 's')[0]);
+        }
+        for (int i = 0; i < tableCode.dealerLocations.Length; i++)
+        {
+            //Debug.Log(i);
+            createPhysicalCard(tableCode.dealerLocations[i], deck.drawCards(1, 's')[0]);
+        }
+        for (int i = 0; i < tableCode.player1Locations.Length; i++)
+        {
+            //Debug.Log(i);
+            createPhysicalCard(tableCode.player1Locations[i], deck.drawCards(1, 's')[0]);
+        }
+        for (int i = 0; i < tableCode.player2Locations.Length; i++)
+        {
+            //Debug.Log(i);
+            createPhysicalCard(tableCode.player2Locations[i], deck.drawCards(1, 's')[0]);
+        }
+        for (int i = 0; i < tableCode.player3Locations.Length; i++)
+        {
+            //Debug.Log(i);
+            createPhysicalCard(tableCode.player3Locations[i], deck.drawCards(1, 's')[0]);
+        }
+        for (int i = 0; i < tableCode.player4Locations.Length; i++)
+        {
+            //Debug.Log(i);
+            createPhysicalCard(tableCode.player4Locations[i], deck.drawCards(1, 's')[0]);
         }
     }
 

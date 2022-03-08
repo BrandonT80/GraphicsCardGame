@@ -53,9 +53,9 @@
      <Compile Include="Assets\Code\SampleSceneCode.cs" />
      <Compile Include="Assets\Code\CardPrefabCode.cs" />
      <Compile Include="Assets\Code\DeckTestDriver.cs" />
-     <None Include="Assets\Playing Cards\Readme_Eng.txt" />
-     <None Include="Assets\Playing Cards\Readme_Jpn.txt" />
-     <None Include="Assets\Playing Cards\Image Effects\Shaders\Reversibl_Draw.shader" />
+     <None Include="Assets\PlayingCards\Readme_Eng.txt" />
+     <None Include="Assets\PlayingCards\Readme_Jpn.txt" />
+     <None Include="Assets\PlayingCards\Image Effects\Shaders\Reversibl_Draw.shader" />
  <Reference Include="UnityEngine">
  <HintPath>F:/Games/Unity/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

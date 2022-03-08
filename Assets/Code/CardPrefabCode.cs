@@ -22,11 +22,15 @@ public class CardPrefabCode : MonoBehaviour
 
     public void setCard(Card c)
     {
-        Material temp = Resources.Load<Material>("Blank");
         this.cardValue = c.getCardValue();
         this.cardSuit = c.getCardSuit();
+        Material temp = Resources.Load<Material>(cardSuit + "" + cardValue);
         this.GetComponent<MeshRenderer>().material = temp;
-        Debug.Log(temp);
+        //Debug.Log(temp);
+
+
+        
+
         //Debug.Log(this.GetComponent<Renderer>().materials[0]);
 
         //renderer.material = Resources.Load( "mymaterial_mtl") as Material;
