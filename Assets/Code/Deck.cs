@@ -16,6 +16,7 @@ public class Deck : MonoBehaviour
 	//4 Card Suits
 	public readonly char[] CARD_SUITS = { 'S', 'H', 'D', 'C' };
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class Deck : MonoBehaviour
 	*/
     public Deck()
     {
+        
         //Create the Deck in order by card value
         for (int i = 0; i < CARD_VALUES.Length; i++)
         {
@@ -264,5 +266,7 @@ public class Deck : MonoBehaviour
             return true;
         }
     }
+
+   
 }
 

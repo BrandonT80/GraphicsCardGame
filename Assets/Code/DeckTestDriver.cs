@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class DeckTestDriver : MonoBehaviour
 {
+    public GameObject deckPrefab;
+    public bool userTesting = true;                 //Boolean for while loop
+    public string userChoice = "D";         //String object for user input
     // Start is called before the first frame update
     void Start()
     {
         //Scanner keyboard = new Scanner(System.in);  //Scanner Object for user input
-        bool userTesting = true;                 //Boolean for while loop
-        string userChoice = "D";         //String object for user input
+
         //Deck deck = new Deck();                     //Deck object that will create 52 Card Objects
         //Deck deck = this.AddComponent<Deck>();
         //SphereCollider sc = gameObject.AddComponent<SphereCollider>() as SphereCollider;
-        Deck deck = gameObject.AddComponent<Deck>() as Deck;
+
+        GameObject deckObject = Instantiate(deckPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Deck deck = deckObject.GetComponent(typeof(Deck)) as Deck;
 
         while (userTesting)     //Loop for Testing
         {

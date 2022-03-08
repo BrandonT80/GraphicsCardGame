@@ -6,17 +6,18 @@ public class Card
 {
     private string cardValue = "";      //String tha will hold the cards value
     private char cardSuit;							//Char that will hold the cards suit
+    public GameObject cardPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public Card()
@@ -114,4 +115,6 @@ public class Card
     {
         return "Card - Value: " + cardValue + " Suit: " + cardSuit;     //Return the card value and suit
     }
+
+    
 }

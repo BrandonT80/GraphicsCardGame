@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ec21e21b8c7e34282e46bc4f2dd59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deckPrefab: {fileID: 6146205938982104625, guid: d557db695b5874e4c8fd01bc575ea1e4, type: 3}
+  userTesting: 1
+  userChoice: D
