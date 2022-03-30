@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3934465947469860, guid: 99e767baf1f490a4d85acf53e03f968e, type: 3}
       propertyPath: playerNumber
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 937761541437172769, guid: 99e767baf1f490a4d85acf53e03f968e, type: 3}
       propertyPath: m_RootOrder
