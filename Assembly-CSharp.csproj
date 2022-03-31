@@ -49,6 +49,7 @@
   <ItemGroup>
      <Compile Include="Assets\Code\Card.cs" />
      <Compile Include="Assets\Code\Table.cs" />
+     <Compile Include="Assets\Code\MainSceneManager.cs" />
      <Compile Include="Assets\Code\CameraCode.cs" />
      <Compile Include="Assets\Code\Deck.cs" />
      <Compile Include="Assets\Code\SampleSceneCode.cs" />
@@ -195,7 +196,7 @@
  <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UIElementsModule">
- <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEngine.UIElementsModule.dll</HintPath>
+ <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UIElementsNativeModule">
  <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsNativeModule.dll</HintPath>
@@ -270,7 +271,7 @@
  <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEditor.SceneTemplateModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UIElementsModule">
- <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEditor.UIElementsModule.dll</HintPath>
+ <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsModule.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UIElementsSamplesModule">
  <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsSamplesModule.dll</HintPath>
@@ -626,9 +627,6 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>F:/Games/Unity/Editor/2020.3.31f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.TextCoreTextEngineModule">
- <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEngine.TextCoreTextEngineModule.dll</HintPath>
- </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -647,9 +645,6 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.TextCoreTextEngineModule">
- <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEditor.TextCoreTextEngineModule.dll</HintPath>
- </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -661,9 +656,6 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.UIElementsInputSystemModule">
- <HintPath>E:/GraphicsCardGame/Library/ScriptAssemblies/UnityEngine.UIElementsInputSystemModule.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

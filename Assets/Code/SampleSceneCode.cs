@@ -36,11 +36,6 @@ public class SampleSceneCode : MonoBehaviour
 
     public void dealAll()
     {
-        for(int i = 0; i < tableCode.pokerLocations.Length; i++)
-        {
-            //Debug.Log(i);
-            createPhysicalCard(tableCode.pokerLocations[i], deck.drawCards(1, 's')[0]);
-        }
         for (int i = 0; i < tableCode.dealerLocations.Length; i++)
         {
             //Debug.Log(i);
