@@ -17,6 +17,7 @@ public class CameraCode : MonoBehaviour
     private GameObject gameLoc;
     private GameObject gameLookLoc;
     private bool doMovement = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,7 @@ public class CameraCode : MonoBehaviour
         blackJack = true;
         gameLoc = blackJackLoc;
         gameLookLoc = blackJackLookLoc;
+
         //this.transform.LookAt(gameLoc.transform);
         //this.transform.rotation = gameLoc.transform.rotation;
     }
