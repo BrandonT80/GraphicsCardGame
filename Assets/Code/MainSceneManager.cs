@@ -85,7 +85,8 @@ public class MainSceneManager : MonoBehaviour
                         break;
                     case 11:
                         createPhysicalCard(tableCode.player4Locations[1], deck.drawCards(1, 's')[0], 4);
-                        dealNumber++;
+                        dealNumber = 0;
+                        dealing = false;
                         break;
                 }
             }
@@ -94,6 +95,7 @@ public class MainSceneManager : MonoBehaviour
 
     public void startBlackJack()
     {
+        //Main Menu stuff
         removePick();
         centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().text = "BlackJack Rules:";
         centerPanel.Find("BlackJackRules").GetComponent<UnityEngine.UI.Text>().enabled = true;
@@ -101,6 +103,7 @@ public class MainSceneManager : MonoBehaviour
 
     public void playGame()
     {
+        //Main Menu stuff
         removePlay();
         centerPanel.Find("BlackJackRules").GetComponent<UnityEngine.UI.Text>().enabled = false;
         centerPanel.Find("SlotRules").GetComponent<UnityEngine.UI.Text>().enabled = false;
@@ -108,6 +111,7 @@ public class MainSceneManager : MonoBehaviour
 
     public void startSlots()
     {
+        //Main Menu stuff
         removePick();
         centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().text = "Slot Rules:";
         centerPanel.Find("SlotRules").GetComponent<UnityEngine.UI.Text>().enabled = true;
@@ -115,6 +119,7 @@ public class MainSceneManager : MonoBehaviour
 
     private void removePick()
     {
+        //Main Menu stuff
         centerPanel.Find("PickPanel").GetComponent<UnityEngine.UI.Image>().enabled = false;
         centerPanel.Find("PickPanel").Find("PickText").GetComponent<UnityEngine.UI.Text>().enabled = false;
         centerPanel.Find("PickPanel").Find("BlackJackButton").GetComponent<UnityEngine.UI.Button>().enabled = false;
@@ -136,6 +141,7 @@ public class MainSceneManager : MonoBehaviour
 
     private void removePlay()
     {
+        //Main Menu stuff
         mainCanvas.transform.Find("PlayButton").GetComponent<UnityEngine.UI.Image>().enabled = false;
         mainCanvas.transform.Find("PlayButton").GetComponent<UnityEngine.UI.Button>().enabled = false;
         mainCanvas.transform.Find("PlayButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = false;
