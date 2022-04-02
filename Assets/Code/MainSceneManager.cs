@@ -21,6 +21,8 @@ public class MainSceneManager : MonoBehaviour
     public bool dealing = false;
     public int dealNumber = 0;
 
+    public GameObject BlackJackGameObject;
+
     public GameObject[] playerGroups = new GameObject[6];
 
     // Start is called before the first frame update
@@ -181,7 +183,10 @@ public class MainSceneManager : MonoBehaviour
         deck.shuffleDeck();
         deck.shuffleDeck();
         deck.shuffleDeck();
-        dealAll();
+        //dealAll();
+
+        BlackJackManager BJM = BlackJackGameObject.GetComponent<BlackJackManager>();
+        BJM.beginBlackJack();
     }
 
     public void createPhysicalCard(GameObject location, Card c, int player)
