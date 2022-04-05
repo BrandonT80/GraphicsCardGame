@@ -22,6 +22,7 @@ public class BlackJackManager : MonoBehaviour
     private UnityEngine.UI.Image standButton;
     private UnityEngine.UI.Text hitText;
     private UnityEngine.UI.Text standText;
+    public  int usersBet;
     public Dictionary<string, int>My_dict=new Dictionary<string, int>(){ 
             {"K", 10}, {"J", 10}, {"Q", 10}, {"10", 10}, {"9", 9}, {"8", 8}, {"7", 7}, {"6", 6}, {"5", 5}, {"4", 4}, {"3", 3}, {"2", 2} };
 
@@ -42,7 +43,6 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public void getUserBet(){
-        int usersBet;
         try{
             usersBet = int.Parse(BetInputText.text);
         }catch{
@@ -51,6 +51,7 @@ public class BlackJackManager : MonoBehaviour
         if(usersBet >= 1 && usersBet <= 500){
             disableBetUI();
             NotificationText.text = "Thank you. Your bet is $" + usersBet + ".";
+            MSM.spendMoney(usersBet);
             StartCoroutine(delay());
         }else{
             NotificationText.text = "Please enter a valid bet";
@@ -69,23 +70,8 @@ public class BlackJackManager : MonoBehaviour
         NotificationText.text = "Review your cards and choose a move.."; 
         aiplay(ai1);
         CardPrefabCode[] cards = player.GetComponentsInChildren<CardPrefabCode>();
-        int pac=0;
-        int handval=0;
-        for(int i=0; i<cards.Length; i++){
-            if(cards[i].cardValue=="A"){
-                if(pac==1){
-                    handval++;
-                }
-                else{
-                    pac++;
-                    handval+=11;
-                }
-            }
-            else{
-                handval+=My_dict[cards[i].cardValue];
-            }
-        }
-        if(handval==21){
+        Debug.Log(calchand(cards));
+        if(calchand(cards)==21){
             //Something to denote the player got a blackjack.
             Debug.Log("You got BlackJack");
             aiplay(ai2);
@@ -98,29 +84,15 @@ public class BlackJackManager : MonoBehaviour
 
     private void aiplay(GameObject gamer){
         CardPrefabCode[] cards = gamer.GetComponentsInChildren<CardPrefabCode>();
-        int showing=0;
-        int ac=0;
-        for(int i=0; i<cards.Length; i++){
-            if(cards[i].cardValue=="A"){
-                if(ac==1){
-                    showing++;
-                }
-                else{
-                    ac++;
-                    showing+=11;
-                }
-            }
-            else{
-                showing+=My_dict[cards[i].cardValue];
-            }
-        }
+        int showing=calchand(cards);
         if(showing==21){
             //Something to denote that this AI got a BlackJack.
-            return;
         }
         int count=2;
         while(showing<17){
-            //Here you will draw the AI a new card.
+            //Here you will draw the AI a new card. You are going to need make it where the cards are being dealt to the right position.
+            //It should just be the same as count though.
+            //You might want to do something to denote that the AI is hitting.
             if(gamer==dealer){
                 MSM.createPhysicalCard(MSM.tableCode.dealerLocations[0], MSM.deck.drawCards(1, 's')[0], 0);
             }
@@ -131,27 +103,46 @@ public class BlackJackManager : MonoBehaviour
                 MSM.createPhysicalCard(MSM.tableCode.player3Locations[0], MSM.deck.drawCards(1, 's')[0], 3);
             }
             cards=gamer.GetComponentsInChildren<CardPrefabCode>();
-            if(cards[count].cardValue=="A"){
-                if((showing+11)>21){
-                    showing++;
-                }
-                else{
-                    showing+=11;
-                    ac++;
-                }
-            }
-            else{
-                showing+=My_dict[cards[count].cardValue];
-                if(showing>21 && ac>0){
-                    ac--; 
-                    showing-=10;
-                }
-            }
+            showing=calchand(cards);
             count++;
         }
         if(showing>21){
             //Something to denote that this AI busted.
-            Debug.Log("Busted"+showing);
+            Debug.Log("Busted "+showing);
+        }
+        if(gamer==dealer){
+            CardPrefabCode[] pcards = player.GetComponentsInChildren<CardPrefabCode>();
+            int handval=calchand(pcards);
+            if(handval>21){
+                //Something to denote that the player lost because they busted on their turn.
+            }
+            else if(handval==21 && pcards.Length==2){
+                if(showing==21 && cards.Length==2){
+                    //Something to denote the players BlackJack and the dealers BlackJack cancel out.
+                    MSM.addMoney(usersBet);
+                }
+                else{
+                    //Something to denote that the player won because of a BlackJack.
+                    MSM.addMoney((usersBet*3)/2);
+                }
+            }
+            else if(showing==21 && cards.Length==2){
+                //Something to denote that the dealers BlackJack won.
+            }
+            else if(handval==showing){
+                //Something to denote that the player tied with the dealer.
+                MSM.addMoney(usersBet);
+                Debug.Log("Tied with the dealer.");
+            }
+            else if(showing>21){
+                //Something to denote that the dealer busted, and the player wins.
+                MSM.addMoney(2*usersBet);
+            }
+            else if(showing<handval){
+                //Something  to denote that the player beat the dealer.
+                MSM.addMoney(2*usersBet);
+            }
+            //You will probalbly set up a screen here to ask the player if he wants to play again.
         }
     }
 
@@ -159,43 +150,17 @@ public class BlackJackManager : MonoBehaviour
         enabledMenuUI();
     }
 
-    private void enableBetUI(){
-        NotificationText.text = "Please enter your bet";
-        BetInputBackground.enabled = true;
-        BetInputText.enabled = true;
-        BetButton.enabled = true;
-        BetButtonText.enabled = true;
-    }
-
     public void playerHit(){
         disabledMenuUI();
         NotificationText.text = "You chose to hit.";
+        //You will need to make more placements for the cards to be put into as well as the animation.
+        //So that this part will always place the new card in the next location.
         MSM.createPhysicalCard(MSM.tableCode.playerLocations[1], MSM.deck.drawCards(1, 's')[0], -1);
         CardPrefabCode[] cards = player.GetComponentsInChildren<CardPrefabCode>();
-        int pac=0;
-        int handval=0;
-        for(int i=0; i<cards.Length; i++){
-            if(cards[i].cardValue=="A"){
-                if(pac==1){
-                    handval++;
-                }
-                else{
-                    pac++;
-                    handval+=11;
-                }
-            }
-            else{
-                handval+=My_dict[cards[i].cardValue];
-            }
-        }
-        Debug.Log(handval);
-        if(handval>21 && pac>0){
-            pac--;
-            handval-=10;
-        }
+        int handval=calchand(cards);
         if(handval>21){
             //Something to denote that the player busted.
-            Debug.Log("You Busted");
+            Debug.Log("You Busted.");
             disabledMenuUI();
             aiplay(ai2);
             aiplay(dealer);
@@ -209,6 +174,38 @@ public class BlackJackManager : MonoBehaviour
         NotificationText.text = "You chose to stand.";
         aiplay(ai2);
         aiplay(dealer);
+    }
+
+    public int calchand(CardPrefabCode[] cards){
+        int ac=0;
+        int handval=0;
+        for(int i=0; i<cards.Length; i++){
+            if(cards[i].cardValue=="A"){
+                if(ac==1){
+                    handval++;
+                }
+                else{
+                    ac++;
+                    handval+=11;
+                }
+            }
+            else{
+                handval+=My_dict[cards[i].cardValue];
+            }
+        }
+        if(handval>21 && ac>0){
+            ac--;
+            handval-=10;
+        }
+        return handval;
+    }
+
+    private void enableBetUI(){
+        NotificationText.text = "Please enter your bet";
+        BetInputBackground.enabled = true;
+        BetInputText.enabled = true;
+        BetButton.enabled = true;
+        BetButtonText.enabled = true;
     }
 
     private void disableBetUI(){
