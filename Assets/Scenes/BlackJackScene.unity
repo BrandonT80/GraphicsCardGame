@@ -28112,7 +28112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSceneManager: {fileID: 34312182}
   player: {fileID: 2061979298}
+  ai1: {fileID: 967980515}
+  ai2: {fileID: 958293801}
   dealer: {fileID: 1488218034}
+  gamer: {fileID: 0}
 --- !u!4 &1705959492
 Transform:
   m_ObjectHideFlags: 0
