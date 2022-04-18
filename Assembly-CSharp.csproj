@@ -45,6 +45,7 @@
      <Compile Include="Assets\Code\CardPrefabCode.cs" />
      <Compile Include="Assets\Code\DeckTestDriver.cs" />
      <Compile Include="Assets\Code\SlotSelectionManager.cs" />
+     <Compile Include="Assets\Outcome.cs" />
      <None Include="Assets\Casino_Environment_Pack\Shader\Plants_Shader.shader" />
      <None Include="Assets\PlayingCards\Readme_Eng.txt" />
      <None Include="Assets\Casino_Environment_Pack\Shader\Glass_Shader.shader" />
