@@ -56,6 +56,14 @@ public class CardPrefabCode : MonoBehaviour
         distance = Vector3.Distance(this.transform.position, location.position);
     }
 
+    public void upsideDownCard(){
+        this.transform.rotation = Quaternion.Euler(0, 0, 180);
+    }
+
+    public void rightSideUpCard(){
+        this.transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     public void setManager(GameObject man)
     {
         manager = man;

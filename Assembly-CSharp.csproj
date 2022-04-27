@@ -44,8 +44,7 @@
      <Compile Include="Assets\Code\SampleSceneCode.cs" />
      <Compile Include="Assets\Code\CardPrefabCode.cs" />
      <Compile Include="Assets\Code\DeckTestDriver.cs" />
-     <Compile Include="Assets\Code\SlotSelectionManager.cs" />
-     <Compile Include="Assets\Code\Outcome.cs" />
+ main
      <None Include="Assets\Casino_Environment_Pack\Shader\Plants_Shader.shader" />
      <None Include="Assets\PlayingCards\Readme_Eng.txt" />
      <None Include="Assets\Casino_Environment_Pack\Shader\Glass_Shader.shader" />
@@ -619,34 +618,7 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.32f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>C:\Users\tisbe\Documents\GitHub\GraphicsCardGame\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+ main
     </Reference>
   </ItemGroup>
   <ItemGroup>

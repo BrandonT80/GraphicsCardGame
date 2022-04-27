@@ -21,6 +21,8 @@ public class MainSceneManager : MonoBehaviour
     public bool dealing = false;
     public int dealNumber = 0;
 
+    public GameObject BlackJackGameObject;
+
     public GameObject[] playerGroups = new GameObject[6];
 
     // Start is called before the first frame update
@@ -48,11 +50,11 @@ public class MainSceneManager : MonoBehaviour
                         dealNumber++;
                         break;
                     case 2:
-                        createPhysicalCard(tableCode.player1Locations[1], deck.drawCards(1, 's')[0], 1);
+                        //createPhysicalCard(tableCode.player1Locations[1], deck.drawCards(1, 's')[0], 1);
                         dealNumber++;
                         break;
                     case 3:
-                        createPhysicalCard(tableCode.player1Locations[0], deck.drawCards(1, 's')[0], 1);
+                        //createPhysicalCard(tableCode.player1Locations[0], deck.drawCards(1, 's')[0], 1);
                         dealNumber++;
                         break;
                     case 4:
@@ -80,11 +82,11 @@ public class MainSceneManager : MonoBehaviour
                         dealNumber++;
                         break;
                     case 10:
-                        createPhysicalCard(tableCode.player4Locations[0], deck.drawCards(1, 's')[0], 4);
+                        //createPhysicalCard(tableCode.player4Locations[0], deck.drawCards(1, 's')[0], 4);
                         dealNumber++;
                         break;
                     case 11:
-                        createPhysicalCard(tableCode.player4Locations[1], deck.drawCards(1, 's')[0], 4);
+                        //createPhysicalCard(tableCode.player4Locations[1], deck.drawCards(1, 's')[0], 4);
                         dealNumber = 0;
                         dealing = false;
                         break;
@@ -184,7 +186,10 @@ public class MainSceneManager : MonoBehaviour
         deck.shuffleDeck();
         deck.shuffleDeck();
         deck.shuffleDeck();
-        dealAll();
+        //dealAll();
+
+        BlackJackManager BJM = BlackJackGameObject.GetComponent<BlackJackManager>();
+        BJM.beginBlackJack();
     }
 
     public void createPhysicalCard(GameObject location, Card c, int player)
