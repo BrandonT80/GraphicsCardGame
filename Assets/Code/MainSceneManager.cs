@@ -50,11 +50,11 @@ public class MainSceneManager : MonoBehaviour
                         dealNumber++;
                         break;
                     case 2:
-                        createPhysicalCard(tableCode.player1Locations[1], deck.drawCards(1, 's')[0], 1);
+                        //createPhysicalCard(tableCode.player1Locations[1], deck.drawCards(1, 's')[0], 1);
                         dealNumber++;
                         break;
                     case 3:
-                        createPhysicalCard(tableCode.player1Locations[0], deck.drawCards(1, 's')[0], 1);
+                        //createPhysicalCard(tableCode.player1Locations[0], deck.drawCards(1, 's')[0], 1);
                         dealNumber++;
                         break;
                     case 4:
@@ -82,11 +82,11 @@ public class MainSceneManager : MonoBehaviour
                         dealNumber++;
                         break;
                     case 10:
-                        createPhysicalCard(tableCode.player4Locations[0], deck.drawCards(1, 's')[0], 4);
+                        //createPhysicalCard(tableCode.player4Locations[0], deck.drawCards(1, 's')[0], 4);
                         dealNumber++;
                         break;
                     case 11:
-                        createPhysicalCard(tableCode.player4Locations[1], deck.drawCards(1, 's')[0], 4);
+                        //createPhysicalCard(tableCode.player4Locations[1], deck.drawCards(1, 's')[0], 4);
                         dealNumber = 0;
                         dealing = false;
                         break;
