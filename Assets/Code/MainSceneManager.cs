@@ -115,6 +115,9 @@ public class MainSceneManager : MonoBehaviour
         removePick();
         centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().text = "Slot Rules:";
         centerPanel.Find("SlotRules").GetComponent<UnityEngine.UI.Text>().enabled = true;
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Button>().enabled = true;
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("StandButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = true;
     }
 
     private void removePick()
