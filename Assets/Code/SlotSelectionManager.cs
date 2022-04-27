@@ -27,21 +27,22 @@ public class SlotSelectionManager : MonoBehaviour
             if(Physics.Raycast(ray, out hit))
             {
                 var selection = hit.transform;
+                //check to see if user clicks the play slot button
                 if(selection.CompareTag(selectableTag))
                 {
+                    //remove player's money as payment
                     money.GetComponent<MainSceneManager>().spendMoney(cost);
-                    StartCoroutine(Spin(slot1, timer - 2, rand.Next(500, 1000)));
-                    StartCoroutine(Spin(slot2, timer - 1, rand.Next(500, 1000)));
-                    StartCoroutine(Spin(slot3, timer, rand.Next(500, 1000)));
+
+                    //spin slots and determine how much the player won
                     StartCoroutine(CalculateScore(timer + 1));
                 }
             }
         }
     }
 
-    IEnumerator Spin(GameObject slot, float timer, float speed)
+    IEnumerator Spin(GameObject slot, GameObject outcome, float timer, float speed)
     {
-        while(timer > 0 || outcome1.GetComponent<Outcome>().colliderList.Count > 2 || outcome2.GetComponent<Outcome>().colliderList.Count > 2 || outcome3.GetComponent<Outcome>().colliderList.Count > 2)
+        while(timer > 0)
         {
             slot.transform.Rotate(Vector3.forward, Time.deltaTime * speed);
             timer -= Time.deltaTime;
@@ -49,33 +50,34 @@ public class SlotSelectionManager : MonoBehaviour
         }
     }
 
-    IEnumerator CalculateScore(float time)
+    IEnumerator CalculateScore(float timer)
     {
-        Debug.Log("Entered CalculateScore. Waiting...");
-        //wait until slots are done spinning 
-        yield return new WaitForSeconds(time + 1);
-
         string result1, result2, result3;
+        
+        //start spinning the slots
+        Coroutine a = StartCoroutine(Spin(slot1, outcome1, timer - 2, rand.Next(500, 1000)));
+        Coroutine b = StartCoroutine(Spin(slot2, outcome2, timer - 1, rand.Next(500, 1000)));
+        Coroutine c = StartCoroutine(Spin(slot3, outcome3, timer, rand.Next(500, 1000)));    
 
-        result1 = outcome1.GetComponent<Outcome>().colliderList[0].gameObject.tag;
-        outcome1.GetComponent<Outcome>().colliderList.RemoveAt(0);
-        Debug.Log("Result 1: " + result1);
+        //wait until slots are done spinning 
+        yield return a;
+        yield return b;
+        yield return c;
 
-        result2 = outcome2.GetComponent<Outcome>().colliderList[0].gameObject.tag;
-        outcome2.GetComponent<Outcome>().colliderList.RemoveAt(0);
-        Debug.Log("Result 2: " + result2);
+        //get outcome for each slot
+        result1 = outcome1.GetComponent<Outcome>().colliderObject.gameObject.tag;
+        result2 = outcome2.GetComponent<Outcome>().colliderObject.gameObject.tag;
+        result3 = outcome3.GetComponent<Outcome>().colliderObject.gameObject.tag;
 
-        result3 = outcome3.GetComponent<Outcome>().colliderList[0].gameObject.tag;
-        outcome3.GetComponent<Outcome>().colliderList.RemoveAt(0);
-        Debug.Log("Result 3: " + result3);
-
+        //check to see if the player got three matching
         if(string.Equals(result1, result2) && string.Equals(result2, result3))
         {
             money.GetComponent<MainSceneManager>().addMoney(15);
         }
+        //check to see if the user got two matching
         else if(string.Equals(result1, result2) || string.Equals(result1, result3) || string.Equals(result2, result3))
         {
-            money.GetComponent<MainSceneManager>().addMoney(12);
+            money.GetComponent<MainSceneManager>().addMoney(10);
         }
     }
 }
