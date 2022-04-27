@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CamLoc
+  - Selectable
+  - Bar
+  - Cherries
+  - Bell
+  - Seven
   layers:
   - Default
   - TransparentFX
