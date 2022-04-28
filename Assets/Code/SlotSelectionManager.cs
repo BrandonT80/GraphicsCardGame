@@ -10,11 +10,12 @@ public class SlotSelectionManager : MonoBehaviour
     [SerializeField] private int cost;
     public GameObject slot1, slot2, slot3, outcome1, outcome2, outcome3, money;
     Random rand = new Random();
+    private Transform centerPanel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        centerPanel = GameObject.Find("Canvas").transform.Find("CenterPanel").transform;
     }
 
     // Update is called once per frame
@@ -42,6 +43,8 @@ public class SlotSelectionManager : MonoBehaviour
 
     IEnumerator Spin(GameObject slot, GameObject outcome, float timer, float speed)
     {
+        hideStand();
+        Debug.Log("You spin me right around baby");
         while(timer > 0)
         {
             slot.transform.Rotate(Vector3.forward, Time.deltaTime * speed);
@@ -63,7 +66,7 @@ public class SlotSelectionManager : MonoBehaviour
         yield return a;
         yield return b;
         yield return c;
-
+        showStand();
         //get outcome for each slot
         result1 = outcome1.GetComponent<Outcome>().colliderObject.gameObject.tag;
         result2 = outcome2.GetComponent<Outcome>().colliderObject.gameObject.tag;
@@ -79,5 +82,24 @@ public class SlotSelectionManager : MonoBehaviour
         {
             money.GetComponent<MainSceneManager>().addMoney(10);
         }
+    }
+
+    public void standUp()
+    {
+        hideStand();
+    }
+
+    public void showStand()
+    {
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Button>().enabled = true;
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("StandButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = true;
+    }
+
+    public void hideStand()
+    {
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Button>().enabled = false;
+        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Image>().enabled = false;
+        centerPanel.Find("StandButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = false;
     }
 }

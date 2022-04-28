@@ -6,13 +6,13 @@ public class BlackJackManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject MainSceneManager;
-    private MainSceneManager MSM;
-    private Transform BlackJackMenu;
-    private UnityEngine.UI.Text NotificationText;
-    private UnityEngine.UI.Image BetInputBackground;
-    private UnityEngine.UI.Text BetInputText;
-    private UnityEngine.UI.Image BetButton;
-    private UnityEngine.UI.Text BetButtonText;
+    public MainSceneManager MSM;
+    public Transform BlackJackMenu;
+    public UnityEngine.UI.Text NotificationText;
+    public UnityEngine.UI.Image BetInputBackground;
+    public UnityEngine.UI.Text BetInputText;
+    public UnityEngine.UI.Image BetButton;
+    public UnityEngine.UI.Text BetButtonText;
     public GameObject player; 
     public GameObject ai1;
     public GameObject ai2;
@@ -52,6 +52,7 @@ public class BlackJackManager : MonoBehaviour
         NotificationText = BlackJackMenu.Find("NotificationText").GetComponent<UnityEngine.UI.Text>();
         BetInputBackground = BlackJackMenu.Find("BetInput").GetComponent<UnityEngine.UI.Image>();
         BetInputText = BlackJackMenu.Find("BetInput").Find("Text").GetComponent<UnityEngine.UI.Text>();
+        Debug.Log("1BET: " + BetInputText);
         BetButton = BlackJackMenu.Find("Button").GetComponent<UnityEngine.UI.Image>();
         BetButtonText = BlackJackMenu.Find("Button").Find("Text").GetComponent<UnityEngine.UI.Text>();
 
@@ -69,17 +70,22 @@ public class BlackJackManager : MonoBehaviour
     }
 
     public void getUserBet(){
-        try{
+        Debug.Log("BET: " + BetInputText);
+        try
+        {
+            Debug.Log("BET: " + BetInputText.text);
             usersBet = int.Parse(BetInputText.text);
         }catch{
+            Debug.Log("BET: " + usersBet);
             usersBet = 0;
         }
-        if(usersBet >= 1 && usersBet <= 500){
+        if(usersBet >= 1 && usersBet <= 1001){
             disableBetUI();
             NotificationText.text = "Thank you. Your bet is $" + usersBet + ".";
             MSM.spendMoney(usersBet);
             StartCoroutine(delay());
         }else{
+            Debug.Log("BET: " + usersBet);
             NotificationText.text = "Please enter a valid bet";
         }
     }
@@ -451,7 +457,8 @@ public class BlackJackManager : MonoBehaviour
         replayText.enabled = true;
     }
 
-    private void disableQuitReplay(){
+    public void disableQuitReplay(){
+        NotificationText.enabled = false;
         quitButton.enabled = false;
         quitText.enabled = false;
         replayButton.enabled = false;
@@ -481,6 +488,7 @@ public class BlackJackManager : MonoBehaviour
 
     public void beginBlackJack(){
         disableQuitReplay();
+        NotificationText.enabled = true;
         NotificationText.text = "Welcome to Black Jack!";
         enableBetUI();
 

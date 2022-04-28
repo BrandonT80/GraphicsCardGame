@@ -28,7 +28,9 @@ public class MainSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log(mainCanvas.transform.Find("CenterPanel").GetComponent<UnityEngine.UI.Image>().color.a);
         addMoney(0);
+        //mainCanvas.transform.Find("TopRightPanel").Find("Money").GetComponent<UnityEngine.UI.Text>().enabled = true;
         centerPanel = GameObject.Find("Canvas").transform.Find("CenterPanel").transform;
     }
 
@@ -114,12 +116,10 @@ public class MainSceneManager : MonoBehaviour
     public void startSlots()
     {
         //Main Menu stuff
+        Debug.Log("Starting Slots");
         removePick();
         centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().text = "Slot Rules:";
         centerPanel.Find("SlotRules").GetComponent<UnityEngine.UI.Text>().enabled = true;
-        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Button>().enabled = true;
-        centerPanel.Find("StandButton").GetComponent<UnityEngine.UI.Image>().enabled = true;
-        centerPanel.Find("StandButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = true;
     }
 
     private void removePick()
@@ -155,20 +155,30 @@ public class MainSceneManager : MonoBehaviour
         centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().enabled = false;
         centerPanel.Find("TopTextPanel").GetComponent<UnityEngine.UI.Image>().enabled = false;
         mainCanvas.transform.Find("CenterPanel").GetComponent<UnityEngine.UI.Image>().enabled = false;
-
-        beginBlackJack();
+        if(centerPanel.Find("BlackJackRules").GetComponent<UnityEngine.UI.Text>().enabled)
+        {
+            beginBlackJack();
+        }
     }
 
     public void addMoney(int amount)
     {
         money += amount;
         mainCanvas.transform.Find("TopRightPanel").Find("Money").GetComponent<UnityEngine.UI.Text>().text = "Money: $" + money;
+        if (money > 2000)
+        {
+            Application.LoadLevel("WinScene");
+        }
     }
 
     public void spendMoney(int amount)
     {
         money -= amount;
         mainCanvas.transform.Find("TopRightPanel").Find("Money").GetComponent<UnityEngine.UI.Text>().text = "Money: $" + money;
+        if(money < 0)
+        {
+            Application.LoadLevel("LoseScene");
+        }
     }
 
     public void dealAll()
@@ -190,6 +200,11 @@ public class MainSceneManager : MonoBehaviour
 
         BlackJackManager BJM = BlackJackGameObject.GetComponent<BlackJackManager>();
         BJM.beginBlackJack();
+    }
+
+    public void spinAroundRoom()
+    {
+
     }
 
     public void createPhysicalCard(GameObject location, Card c, int player)
@@ -236,5 +251,25 @@ public class MainSceneManager : MonoBehaviour
                 cardObj.GetComponent<CardPrefabCode>().setLocation(location.transform);
                 break;
         }
+    }
+
+    public void showPick()
+    {
+        //Main Menu stuff
+        Color c = mainCanvas.transform.Find("CenterPanel").GetComponent<UnityEngine.UI.Image>().color;
+        c.a = 0.094f;
+        mainCanvas.transform.Find("CenterPanel").GetComponent<UnityEngine.UI.Image>().color = c;
+        centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().text = "Casino Night";
+        centerPanel.Find("TopText").GetComponent<UnityEngine.UI.Text>().enabled = true;
+        centerPanel.Find("TopTextPanel").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        mainCanvas.transform.Find("CenterPanel").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("PickPanel").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("PickPanel").Find("PickText").GetComponent<UnityEngine.UI.Text>().enabled = true;
+        centerPanel.Find("PickPanel").Find("BlackJackButton").GetComponent<UnityEngine.UI.Button>().enabled = true;
+        centerPanel.Find("PickPanel").Find("BlackJackButton").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("PickPanel").Find("BlackJackButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = true;
+        centerPanel.Find("PickPanel").Find("SlotsButton").GetComponent<UnityEngine.UI.Button>().enabled = true;
+        centerPanel.Find("PickPanel").Find("SlotsButton").GetComponent<UnityEngine.UI.Image>().enabled = true;
+        centerPanel.Find("PickPanel").Find("SlotsButton").GetComponentInChildren<UnityEngine.UI.Text>().enabled = true;
     }
 }

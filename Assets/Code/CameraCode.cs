@@ -90,4 +90,12 @@ public class CameraCode : MonoBehaviour
         //this.transform.LookAt(gameLoc.transform);
     }
 
+    public void spinAroundRoom()
+    {
+        //No longer playing games :c
+        slots = false;
+        blackJack = false;
+        doMovement = true;
+        this.transform.rotation = cameraLocations[cameraIterator].transform.rotation;
+    }
 }
