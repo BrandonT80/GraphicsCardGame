@@ -55,6 +55,7 @@ public class SlotSelectionManager : MonoBehaviour
 
     IEnumerator CalculateScore(float timer)
     {
+        this.tag = "Untagged";
         string result1, result2, result3;
         
         //start spinning the slots
@@ -75,13 +76,14 @@ public class SlotSelectionManager : MonoBehaviour
         //check to see if the player got three matching
         if(string.Equals(result1, result2) && string.Equals(result2, result3))
         {
-            money.GetComponent<MainSceneManager>().addMoney(15);
+            money.GetComponent<MainSceneManager>().addMoney(40);
         }
         //check to see if the user got two matching
         else if(string.Equals(result1, result2) || string.Equals(result1, result3) || string.Equals(result2, result3))
         {
-            money.GetComponent<MainSceneManager>().addMoney(10);
+            money.GetComponent<MainSceneManager>().addMoney(20);
         }
+        this.tag = selectableTag;
     }
 
     public void standUp()
