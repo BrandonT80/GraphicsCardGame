@@ -15,7 +15,7 @@ public class BallCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(up);
+        //Debug.Log(up);
         if(transform.localPosition.z < 0.13 && up)
         {
             transform.Translate(Vector3.up * Time.deltaTime * 0.05f, Space.World);
